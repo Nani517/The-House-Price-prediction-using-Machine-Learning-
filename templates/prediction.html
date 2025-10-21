@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>House price prediction using machine learning </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Dancing+Script:400,700|Muli:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="../static/fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/jquery-ui.css">
+  <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+
+  <link rel="stylesheet" href="../static/css/jquery.fancybox.min.css">
+
+  <link rel="stylesheet" href="../static/css/bootstrap-datepicker.css">
+
+  <link rel="stylesheet" href="../static/fonts/flaticon/font/flaticon.css">
+
+  <link rel="stylesheet" href="../static/css/aos.css">
+  <link href="../static/css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="../static/css/style.css">
+
+
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    
+    <div class="header-top bg-light">
+   
+      
+
+
+      
+      <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
+
+      <div class="container">
+        <div class="d-flex align-items-center">
+          
+          <div class="mr-auto">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block">
+                 <li class="active">
+                  <a href="{{url_for('index')}}" class="nav-link text-left">Home</a>
+                </li>
+                <li>
+                  <a href="{{url_for('login')}}" class="nav-link text-left">Login</a>
+                </li>
+				<li>
+                  <a href="{{url_for('upload')}}" class="nav-link text-left">Upload</a>
+                </li>
+				<li>
+                  <a href="{{url_for('prediction')}}" class="nav-link text-left">Prediction</a>
+                </li>
+				<li>
+                  <a href="{{url_for('chart')}}" class="nav-link text-left">Chart</a>
+                </li>
+			  
+              </ul>                                                                                                                                                                                                                                                                                          </ul>
+            </nav>
+
+          </div>
+          
+         
+        </div>
+      </div>
+
+    </div>
+    
+    </div>
+    
+
+
+
+    <div class="intro-section site-blocks-cover innerpage" style="background-image: url('../static/images/water13.jpg');">
+      <div class="container">
+        <div class="row align-items-center text-center border">
+          <div class="col-lg-12 mt-5" data-aos="fade-up">
+            <h1>Prediction</h1>
+            <p class="text-white text-center">
+  
+            
+              <span>House Price Prediction</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+               
+ <div class="banner-content col-lg-8 col-12 m-lg-auto text-center">
+           <h1 class="banner-heading h2 display-3 pb-5 semi-bold-600 typo-space-line-center">House Price Prediction</h1>
+        </div>
+       <div class="col-md-12 col-sm-12 col-xs-12" style="margin-left:-10px;">
+            
+            <center><form  action="{{ url_for('predict')}}"  method="POST"> </center>
+
+
+                <div class="span5">
+                    <div class="control-group">
+                        
+                        <center><label class="control-label" for="inputMessage"><b></b></label></br></center>
+                       
+
+                    
+                    <div class="controls">
+                     
+              <center> <b>  Year_Built: </b> <input type="text" name="year_built" placeholder="Year_Built" required="required" width="300" style="width: 300px"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+                 
+                  </div>
+                  </br>
+
+                 
+                <div class="controls">
+                 
+          <center> <b> Stories: </b> <input type="text" name="stories" placeholder="Stories" required="required" width="300" style="width: 300px"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+             
+              </div>
+              
+            </br>
+            <div class="controls">
+             
+      <center> <b> Num_Bedrooms: </b> <input type="text" name="num_bedrooms" placeholder="Num_Bedrooms" required="required" width="300" style="width: 300px"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+         
+          </div>
+          
+        </br>
+        <div class="controls">
+         
+  <center> <b> Full_Bathrooms: </b> <input type="text" name="full_bathrooms" placeholder="Full_Bathrooms" required="required" width="300" style="width: 300px"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+     
+      </div>
+  
+    </br>
+    <div class="controls">
+     
+<center> &nbsp;&nbsp;&nbsp;<b> Half_Bathrooms: </b> <input type="text" name="half_bathrooms" placeholder="Half_Bathrooms" required="required" width="300" style="width: 300px"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </center>
+ 
+  </div>
+ 
+</br>
+<div class="controls">
+ 
+<center> <b> Livable_Sqft: </b> <input type="text" name="livable_sqft" placeholder="Livable_Sqft" required="required" width="300" style="width: 300px"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+
+</div>
+ 
+</br>
+ 
+<div class="controls">
+ 
+<center> <b> Total_Sqft: </b> <input type="text" name="total_sqft" placeholder="Total_Sqft" required="required" width="300" style="width: 300px"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+
+</div>
+ 
+</br>
+
+ 
+    <div class="controls">
+			 
+      <center><b>Fireplace:</b>    <select   type="text"  name="fireplace" required="required" placeholder="Fireplace" width="300" style="width: 300px"</center>
+               <option value="1">True</option>
+           <option value="0">False</option>
+         
+       </select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+      </div> 
+    </br>
+    <div class="controls">
+			 
+      <center><b>Pool:</b>    <select   type="text"  name="pool" required="required" placeholder="Pool" width="300" style="width: 300px"></center>
+               <option value="1">True</option>
+           <option value="0">False</option>
+         
+       </select>&nbsp;
+
+      </div> 
+    </br>
+    <div class="controls">
+			 
+      <center><b>Central_Heating:</b>    <select   type="text"  name="central_heating" required="required" placeholder="Central_Heating" width="300" style="width: 300px"></center>
+               <option value="1">True</option>
+           <option value="0">False</option>
+         
+       </select>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+      </div> 
+    </br>
+    <div class="controls">
+			 
+      <center><b>Central_Cooling:</b>    <select   type="text"  name="central_cooling" required="required" placeholder="central_cooling" width="300" style="width: 300px"></center>
+               <option value="1">True</option>
+           <option value="0">False</option>
+         
+       </select>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+      </div> 
+    </br>
+    <div class="controls">
+			 
+      <center><b>Garage_Type:</b>    <select   type="text"  name="garage_type" required="required" placeholder="garage_type" width="300" style="width: 300px"></center>
+               <option value="1">Attached</option>
+           <option value="0">None</option>
+           <option value="2">Detached</option>
+         
+       </select>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+      </div> 
+    </br>
+    
+    <div class="controls">
+			 
+      <center><b>City:</b>    <select   type="text"  name="city" required="required" placeholder="city" width="300" style="width: 300px"></center>
+               <option value="0">Hallfort</option>
+           <option value="1">Lake Christinaport</option>
+           <option value="2">Morrisport</option>
+           <option value="3">West Ann</option>
+           <option value="4">Richardport</option>
+           <option value="5">Lewishaven</option>
+           <option value="6">Clarkberg</option>
+           <option value="7">Chadstad</option>
+           <option value="8">South Stevenfurt</option>
+           <option value="9">Coletown</option>
+           <option value="10">South Anthony</option>
+           <option value="11">Jenniferberg</option>
+           <option value="12">North Erinville</option>
+           <option value="13">Lake Jennifer</option>
+           <option value="14">West Terrence</option>
+           <option value="15">Jeffreyhaven</option>
+           <option value="16">Brownport</option>
+           <option value="17">Scottberg</option>
+           <option value="18">Lake Carolyn</option>
+           <option value="19">East Amychester</option>
+           <option value="20">Joshuafurt</option>
+           <option value="21">Davidtown</option>
+           <option value="22">Port Jonathanborough</option>
+           <option value="23">Lake Jack</option>
+           <option value="24">Port Andrealand</option>
+           <option value="25">Toddshire</option>
+           <option value="26">Port Daniel</option>
+           <option value="27">East Lucas</option>
+           <option value="28">West Gregoryview</option>
+           <option value="29">Lake Dariusborough</option>
+           <option value="30">West Lydia</option>
+           <option value="31">Davidfort</option>
+           <option value="32">Wendybury</option>
+           <option value="33">Amystad</option>
+           <option value="34">Martinezfort</option>
+           <option value="35">East Justin</option>
+           <option value="36">West Brittanyview</option>
+           <option value="37">New Michele</option>
+           <option value="38">East Janiceville</option>
+           <option value="39">Port Adamtown</option>
+           <option value="40">Justinport</option>
+           <option value="41">West Gerald</option>
+           <option value="42">Fosterberg</option>
+           <option value="43">Leahview</option>
+           <option value="44">Rickytown</option>
+           <option value="45">Julieberg</option>
+           <option value="46">New Robinton</option>
+       </select>  
+
+      </div> 
+    </br>
+<center>  <button type="submit" class="btn btn-primary">Predict </button></center>
+
+
+
+
+
+
+
+</form>
+
+
+
+
+
+<center><h1> Sales Price is  : {{ prediction_text }} </h1></center>
+
+
+
+                        </div>
+                        </div>
+
+
+
+
+
+
+                
+                
+            </div>
+
+
+
+
+			   
+             
+          </div>
+        </div>
+      </div>
+    
+    <div class="footer bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            
+        </div>
+      </div>
+    </div>
+    
+
+  </div>
+  <!-- .site-wrap -->
+
+
+  <!-- loader -->
+  <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#ff5e15"/></svg></div>
+
+  <script src="../static/js/jquery-3.3.1.min.js"></script>
+  <script src="../static/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="../static/js/jquery-ui.js"></script>
+  <script src="../static/js/popper.min.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/owl.carousel.min.js"></script>
+  <script src="../static/js/jquery.stellar.min.js"></script>
+  <script src="../static/js/jquery.countdown.min.js"></script>
+  <script src="../static/js/bootstrap-datepicker.min.js"></script>
+  <script src="../static/js/jquery.easing.1.3.js"></script>
+  <script src="../static/js/aos.js"></script>
+  <script src="../static/js/jquery.fancybox.min.js"></script>
+  <script src="../static/js/jquery.sticky.js"></script>
+  <script src="../static/js/jquery.mb.YTPlayer.min.js"></script>
+
+
+
+
+  <script src="../static/js/main.js"></script>
+
+</body>
+
+</html>
